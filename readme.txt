@@ -2,7 +2,7 @@
 Contributors: Dan Stefancu, Vlad Socaciu, tar.gz
 Tags: connections, custom post types, relationships, many-to-many, users
 Requires at least: 3.4
-Tested up to: 3.5
+Tested up to: 3.5-alpha
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
