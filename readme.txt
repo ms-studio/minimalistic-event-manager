@@ -27,4 +27,3 @@ The plugin checks for valid post types before adding the metabox.
 
 = 1.0 =
 * initial public release
-* 
