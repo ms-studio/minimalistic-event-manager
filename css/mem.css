@@ -1,0 +1,17 @@
+.date-title { padding-left: 18px; background: url("../images/date-button.gif") no-repeat top left;  }
+#mem .inside { padding: 0; margin-bottom: 0;}
+#mem .jj, #mem .hh, #mem .mn { width: 2em;}
+#mem .aa { width: 3em;}
+#mem input { padding: 1px; }
+#mem .mem-delete-timestamp { color:red; }
+.mem-timestamp-wrap {
+	padding-top: 5px;
+}
+.mem-timestamp-wrap .mm {
+	height: 20px;
+	line-height: 14px;
+	vertical-align: top;
+}
+.mem-timestamp-wrap .aa {
+	width: 3.4em;
+}
