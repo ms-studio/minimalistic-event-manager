@@ -23,6 +23,15 @@ and the second parameter the edit mode (full/alpha).
 
 The plugin checks for valid post types before adding the metabox.
 
+Links: 
+[**Documentation**](https://github.com/ms-studio/minimalistic-event-manager/wiki)
+
+== Installation ==
+
+See [Installing Plugins](http://codex.wordpress.org/Managing_Plugins#Installing_Plugins).
+
+After activating it, refer to the [wiki](https://github.com/ms-studio/minimalistic-event-manager/wiki) for further instructions.
+
 == Changelog ==
 
 = 1.0 =
