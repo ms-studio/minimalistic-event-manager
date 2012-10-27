@@ -196,6 +196,8 @@ function mem_touch_time( $type = 'start', $custom_date = '', $repeat_count = 0 )
 	$mn = ($custom_date) ? $minute : '';
 
 	$month = "<select class=\"mm\" name=\"" . $type . "_mm" . ( $repeat_count ? '_'.$repeat_count : '' ) . "\">\n";
+	$month .= "\t\t\t" . '<option value=""';
+	$month .= ">-----</option>\n";
 	for ( $i = 1; $i < 13; $i = $i +1 ) {
 		$monthnum = zeroise($i, 2);
 		$month .= "\t\t\t" . '<option value="' . $monthnum . '"';
@@ -204,8 +206,6 @@ function mem_touch_time( $type = 'start', $custom_date = '', $repeat_count = 0 )
 		/* translators: 1: month number (01, 02, etc.), 2: month abbreviation */
 		$month .= '>' . sprintf( __( '%1$s-%2$s', 'mem' ), $monthnum, $wp_locale->get_month_abbrev( $wp_locale->get_month( $i ) ) ) . "</option>\n";
 	}
-	$month .= "\t\t\t" . '<option value=""';
-	$month .= '>-----</option>';
 	$month .= '</select>';
 
 	$day = '<input type="text" class="jj" name="' . $type . '_jj' . ( $repeat_count ? '_'.$repeat_count : '' ) . '" value="' . $jj . '" size="2" maxlength="2" autocomplete="off" />';

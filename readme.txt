@@ -6,7 +6,7 @@ Tested up to: 3.5-Beta-2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin (MEM or Minimalistic Event Manager) is intended for theme authors and developers, who want a simple, robust and flexible solution for managing event dates. The MEM plugin offers a clean interface that allows to add event dates (start dates, end dates, repeating dates) to posts (and to any custom post types).
+This plugin (MEM or Minimalistic Event Manager) is intended for theme authors and developers, who want a simple, robust and flexible solution for managing event dates. The MEM plugin offers a clean interface that allows to add event dates (start dates, end dates, repeating dates) to posts (and to any custom post type).
 
 == Description ==
 
