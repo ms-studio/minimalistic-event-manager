@@ -5,7 +5,7 @@
 #mem input { padding: 1px; }
 #mem .mem-delete-timestamp { color:red; }
 .mem-timestamp-wrap {
-	padding-top: 5px;
+	padding: 5px 0 7px 0;
 }
 .mem-timestamp-wrap .mm {
 	height: 20px;

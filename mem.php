@@ -234,12 +234,12 @@ function mem_touch_time( $type = 'start', $custom_date = '', $repeat_count = 0 )
 
 	?>
 
-<p>
+<div class="mem-edit-buttons">
 	<a href="#edit_timestamp" class="mem-save-timestamp hide-if-no-js button"><?php _e('OK', 'mem'); ?></a>
 	<a href="#edit_timestamp" class="mem-cancel-timestamp hide-if-no-js"><?php _e('Cancel', 'mem'); ?></a>
 	<span class="mem-separator"> | </span>
 	<a href="#edit_timestamp" class="mem-delete-timestamp hide-if-no-js"><?php _e('Delete', 'mem'); ?></a>
-</p>
+</div>
 <?php
 }
 
