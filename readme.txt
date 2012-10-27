@@ -1,6 +1,6 @@
 === Minimalistic Event Manager ===
 Contributors: Dan Stefancu, Vlad Socaciu, tar.gz
-Tags: connections, custom post types, relationships, many-to-many, users
+Tags: dates, events, time
 Requires at least: 3.4
 Tested up to: 3.5-alpha
 License: GPLv2 or later
