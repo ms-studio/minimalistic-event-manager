@@ -45,11 +45,16 @@ See the online documentation for the full instructions.
 == Installation ==
 
 1. Upload the plugin to your plugins directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
+2. Activate the plugin through the 'Plugins' menu in WordPress
 
 For more detailed instructions, see [Installing Plugins](http://codex.wordpress.org/Managing_Plugins#Installing_Plugins).
 
 After activating the plugin, refer to the [wiki](https://github.com/ms-studio/minimalistic-event-manager/wiki) for further instructions.
+
+== Credits ==
+
+* **Concept and maintenance** [ms-studio.net](http://ms-studio.net)
+* **Development**: [Dream Production](http://dreamproduction.net/)
 
 == Changelog ==
 
