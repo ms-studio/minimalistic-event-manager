@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Minimalistic Event Manager
-Plugin URI: http://dreamproduction.net
+Plugin URI: https://github.com/ms-studio/minimalistic-event-manager/
 Description: The plugin allows to add event dates (start dates, end dates) to posts (and to custom post types).
 Version: 1.0
-Author: Dan Stefancu, Vlad Socaciu, Manuel Schmalstieg
+Author: Dan Stefancu, Manuel Schmalstieg
 Author URI: http://dreamproduction.net
 
 By default the plugin adds the custom MEM metabox to all post types, but this can be changed by
