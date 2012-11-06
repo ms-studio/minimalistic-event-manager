@@ -1,5 +1,6 @@
 === Minimalistic Event Manager ===
 Contributors: de-ce, tar.gz
+Donate link: https://flattr.com/thing/972318/ms-studio/minimalistic-event-manager-on-GitHub
 Tags: dates, events, time
 Requires at least: 3.4
 Tested up to: 3.5-Beta-2
@@ -21,11 +22,11 @@ The MEM plugin offers a clean interface that allows to add event dates (start da
 * Dates can be of three types: start dates, end dates, repeating dates.
 * There is no mandatory date format: Time, Day, and Month are optional. An event date could be "January 2046", or just "2046".
 
-= What the plugin doesn't do =
+= What the plugin doesn’t do =
 
-The MEM plugin works as a simple interface for entering those dates into custom fields, but it won't do anything on the public side of your theme. What happens with the dates on the public side is entirely up to you. You must decide how to display the dates, and you will have to edit your theme files for that.
+The MEM plugin works as a simple interface for entering those dates into custom fields, but it won’t do anything on the public side of your theme. What happens with the dates on the public side is entirely up to you. You must decide how to display the dates, and you will have to edit your theme files for that.
 
-If you aren't sure how to achieve this, our wiki will provide a collection of examples to get you started.
+If you aren’t sure how to achieve this, our [wiki](https://github.com/ms-studio/minimalistic-event-manager/wiki) will provide a collection of examples to get you started.
 
 = Technical implementation =
 
@@ -39,7 +40,7 @@ Technically, the MEM plugin stores the dates as ordinary Custom Fields, in a "ma
 The plugin has two settings that can be modified with a few lines in your functions.php file:
 
 * You can limit it to specific post types.
-* You can use an "alpha" mode, which gives you a blank input field for each date. This can be useful if you need to enter dates that don't fit the predefined format.
+* You can use an "alpha" mode, which gives you a blank input field for each date. This can be useful if you need to enter dates that don’t fit the predefined format.
 
 See the online documentation for the full instructions.
 
@@ -65,7 +66,7 @@ After activating the plugin, refer to the [wiki](https://github.com/ms-studio/mi
 
 = There are hundreds of plugins doing exactly this — why a new one? =
 
-All the date management plugins we tested are more complicated than needed. we tried many of them. we think that our concept is more simple, more robust and more flexible. :) 
+All the date management plugins we tested are more complicated than needed. We tried many of them. We believe that our concept is more simple, more robust and more flexible. :) 
 
 = Can I find you on GitHub? =
 
