@@ -116,14 +116,17 @@ function mem_content($post) {
 
 	$start_title = __('Start date', 'mem');
 	$end_title = __('End date', 'mem');
-	$repeat_title = __('Repeat', 'mem');
+	/* translators: the title of the Repeat item, not the action button */
+	$repeat_title = _x('Repeat', 'repeat item title', 'mem');
 
 	// use default wp class .misc-pub-section for spacing and that thin line below ?>
 	<div class="misc-pub-section start">
 		<span class="date-title"><?php echo $start_title; ?></span>:
 		<strong class="date-label"><?php echo $start_date_label; ?></strong>&nbsp;
 		<a href="#edit_timestamp" class="mem-edit-timestamp hide-if-no-js" tabindex='4'><?php _e('Edit', 'mem') ?></a> &nbsp;
-		<a href="#edit_timestamp" class="mem-repeat-timestamp hide-if-no-js" tabindex='4'><?php _e('Repeat', 'mem') ?></a>
+		<a href="#edit_timestamp" class="mem-repeat-timestamp hide-if-no-js" tabindex='4'><?php 
+		/* translators: the Repeat action button */
+		_ex('Repeat', 'repeat action button', 'mem') ?></a>
 		<div class='hide-if-js mem-date-select'><?php mem_touch_time( 'start', $start_date ); ?></div>
 	</div>
 
@@ -445,7 +448,8 @@ function mem_js() {
 	wp_enqueue_script( 'mem_js', plugins_url('/js/mem.js', __FILE__), array('jquery') );
 	$translation_array = array(
 		'not_set' => __('Not Set', 'mem'),
-		'repeat' => __('Repeat', 'mem'),
+		//'repeat' => __('Repeat', 'mem'),
+		'repeat' => _x('Repeat', 'repeat item title', 'mem'),
 	);
 	// sending ajaxurl as translated string is a hack seen as good practice to send the variable across scripts
 	// @see http://www.garyc40.com/2010/03/5-tips-for-using-ajax-in-wordpress/#js-global

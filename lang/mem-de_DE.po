@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Minimalistic Event Management\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-07 15:14+0200\n"
-"PO-Revision-Date: 2012-11-06 15:48+0100\n"
+"PO-Revision-Date: 2012-11-07 14:14+0100\n"
 "Last-Translator: ms-studio <code@ms-studio.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -32,25 +32,31 @@ msgstr "Start"
 msgid "End date"
 msgstr "Ende"
 
-#: mem.php:115 mem.php:122 mem.php:416
+# translators: the title of the Repeat item, not the action button
+#: mem.php:120 mem.php:452
+msgctxt "repeat item title"
 msgid "Repeat"
 msgstr "Wiederholung"
+
+# translators: the Repeat action button
+#: mem.php:129
+msgctxt "repeat action button"
+msgid "Repeat"
+msgstr "Wiederholen"
 
 #: mem.php:121 mem.php:139 mem.php:155
 msgid "Edit"
 msgstr "Editieren"
 
-# translators: 1: month number (01, 02, etc.), 2: month abbreviation, php-format
+# translators: 1: month number (01, 02, etc.), 2: month abbreviation
 #: mem.php:197
-#, php-format
 msgid "%1$s-%2$s"
 msgstr "%1$s-%2$s"
 
-# input order. 1 month, 2 day, 3 year, 4 hour, 5 minute, php-format
+# input order. 1 month, 2 day, 3 year, 4 hour, 5 minute
 #: mem.php:216
-#, php-format
 msgid "%1$s%2$s, %3$s @ %4$s : %5$s"
-msgstr "%2$s %1$s %3$s à %4$s h %5$s"
+msgstr "%2$s %1$s %3$s um %4$s : %5$s"
 
 #: mem.php:228
 msgid "OK"
