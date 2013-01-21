@@ -2,8 +2,8 @@
 Contributors: de-ce, tar.gz
 Donate link: https://flattr.com/thing/972318/
 Tags: dates, events, time
-Requires at least: 3.4
-Tested up to: 3.5-Beta-2
+Requires at least: 3.0
+Tested up to: 3.5
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -22,7 +22,7 @@ The MEM plugin offers a clean interface that allows to add _event dates_ (start 
 - Event dates can be of three types: start dates, end dates, repeating dates.
 - There is no mandatory date format: Time, Day, and Month are optional. An event date could be "January 2046", or just "2046".
 
-= What the plugin _doesn’t_ do =
+= What the plugin doesn’t do =
 
 The MEM plugin works as a simple interface for entering those dates into custom fields, but it won’t do anything on the public side of your theme. What happens with the dates on the front-end is entirely up to you! You must decide how to display the dates, and you will have to edit your theme files for that…
 
