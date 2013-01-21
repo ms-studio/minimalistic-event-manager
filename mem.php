@@ -290,7 +290,7 @@ function mem_save_date( $id, $post ) {
 				$hour = isset($_POST[$type . '_hh_' . $count_repeats]) ? $_POST[$type . '_hh_' . $count_repeats] : '';
 				$minute = isset($_POST[$type . '_mn_' . $count_repeats]) ? $_POST[$type . '_mn_' . $count_repeats] : '';
 
-				$alpha_date = isset($_POST[$type . '_full-date-alpha_' . $count_repeats]) ? : '';
+				$alpha_date = isset($_POST[$type . '_full-date-alpha_' . $count_repeats]) ? $_POST[$type . '_full-date-alpha_' . $count_repeats] : '';
 
 				// we need this to store multiple meta fields
 				// without old values all the meta fields are overwritten by the new value
