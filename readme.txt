@@ -84,5 +84,8 @@ Of course, here: [https://github.com/ms-studio/minimalistic-event-manager/](http
 
 == Changelog ==
 
+= 1.0.1 =
+* fixes line that triggers activation error on some older php versions
+
 = 1.0 =
 * initial public release
