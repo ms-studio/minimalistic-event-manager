@@ -256,7 +256,7 @@ function mem_touch_time( $type = 'start', $custom_date = '', $repeat_count = 0 )
 function mem_save_date( $id, $post ) {
 	$mem_post_types = get_option( 'mem_post_types' );
 
-	if ( $mem_post_types[0] == 'all' ) {
+	if ( isset($mem_post_types[0]) && $mem_post_types[0] == 'all' ) {
 		$mem_post_types = get_post_types(array('public' => true, 'show_ui' => true));
 	}
 

@@ -15,3 +15,6 @@
 .mem-timestamp-wrap .aa {
 	width: 3.4em;
 }
+.mem-timestamp-wrap input {
+	font-size: 12px;
+}
