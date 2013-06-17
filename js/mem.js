@@ -13,7 +13,7 @@ jQuery(document).ready( function($) {
 
 			// Fill in current date if empty
 			current_date = new Date();
-			if (date_select.find('.aa').val() == '') {
+			if (date_select.find('.aa').val() === '') { // thanks Daniel!
 				date_select.find('.aa').val(current_date.getFullYear());
 				date_select.find('.jj').val(current_date.getDate());
 				// getMonth returns 0-11 values
