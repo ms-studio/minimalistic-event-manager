@@ -3,7 +3,7 @@
 Plugin Name: Minimalistic Event Manager
 Plugin URI: https://github.com/ms-studio/minimalistic-event-manager/
 Description: The plugin allows to add event dates (start dates, end dates) to posts (and to custom post types).
-Version: 1.0.2
+Version: 1.0.3
 Author: Dan Stefancu, Manuel Schmalstieg
 Author URI: http://dreamproduction.net
 
