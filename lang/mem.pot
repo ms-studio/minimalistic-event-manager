@@ -65,3 +65,43 @@ msgstr ""
 #: mem.php:233
 msgid "Delete"
 msgstr ""
+
+# translators: Saturday 1st June 2013, 1:30 PM
+msgctxt "First day of month"
+msgid "l F jS Y, g:i a"
+msgstr ""
+
+# translators: Saturday 1st June 2013, 1:30 PM
+msgctxt "Other day of month"
+msgid "l F jS Y, g:i a"
+msgstr ""
+
+# translators: Monday, January 20th 2013
+msgctxt "First day of month"
+msgid "l, F jS Y"
+msgstr ""
+
+# translators: Monday, January 20th 2013
+msgctxt "Other day of month"
+msgid "l, F jS Y"
+msgstr ""
+
+# translators: From January 1st...
+msgctxt "First day of month"
+msgid "F jS"
+msgstr ""
+
+# translators: From January 20th...
+msgctxt "Other day of month"
+msgid "F jS"
+msgstr ""
+
+# translators: ...to February 1st
+msgctxt "First day of month"
+msgid " – F jS Y"
+msgstr ""
+
+# translators: ...to February 20th
+msgctxt "Other day of month"
+msgid " – F jS Y"
+msgstr ""

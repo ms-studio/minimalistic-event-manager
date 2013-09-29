@@ -3,8 +3,8 @@ Contributors: de-ce, tar.gz
 Donate link: https://flattr.com/thing/972318/
 Tags: dates, events, time
 Requires at least: 3.0
-Tested up to: 3.6-beta3
-Stable tag: 1.0.2
+Tested up to: 3.7-beta1
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,9 @@ Of course, here: [https://github.com/ms-studio/minimalistic-event-manager/](http
 3. An event with start date, repeating twice.
 
 == Changelog ==
+
+= 1.0.3 =
+* uses the icon font of MP6 if available
 
 = 1.0.2 =
 * improves css to adhere to MP6

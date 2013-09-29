@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: Minimalistic Event Management\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-07 15:14+0200\n"
-"PO-Revision-Date: 2012-11-07 14:14+0100\n"
+"PO-Revision-Date: 2013-09-20 17:20+0100\n"
 "Last-Translator: ms-studio <code@ms-studio.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #: mem.php:83
 msgid "Event Dates"
@@ -69,3 +69,43 @@ msgstr "Abbrechen"
 #: mem.php:233
 msgid "Delete"
 msgstr "Löschen"
+
+# translators: Saturday 1st June 2013, 1:30 PM
+msgctxt "First day of month"
+msgid "l F jS Y, g:i a"
+msgstr "l j. F Y, H:i"
+
+# translators: Saturday 20th June 2013, 1:30 PM
+msgctxt "Other day of month"
+msgid "l F jS Y, g:i a"
+msgstr "l j. F Y, H:i"
+
+# translators: Monday, January 1st 2013
+msgctxt "First day of month"
+msgid "l, F jS Y"
+msgstr "l j. F Y"
+
+# translators: Monday, January 20th 2013
+msgctxt "Other day of month"
+msgid "l, F jS Y"
+msgstr "l j. F Y"
+
+# translators: From January 1st...
+msgctxt "First day of month"
+msgid "F jS"
+msgstr "j. F"
+
+# translators: From January 20th...
+msgctxt "Other day of month"
+msgid "F jS"
+msgstr "j. F"
+
+# translators: ...to February 1st
+msgctxt "First day of month"
+msgid " – F jS Y"
+msgstr " – j. F Y"
+
+# translators: ...to February 20th
+msgctxt "Other day of month"
+msgid " – F jS Y"
+msgstr " – j. F Y"

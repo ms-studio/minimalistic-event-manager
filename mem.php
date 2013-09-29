@@ -47,8 +47,8 @@ function mem_plugin_settings( $post_types = array('all'), $edit_mode = 'full' ) 
 		foreach($post_types as $type) {
 			if ( post_type_exists($type) )
 				$types[] = $type;
-		}
 	}
+}
 
 
 

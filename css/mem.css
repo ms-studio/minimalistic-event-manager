@@ -1,9 +1,20 @@
-.date-title { padding-left: 18px; background: url("../images/date-button.gif") no-repeat top left;  }
-#mem .inside { padding: 0; margin-bottom: 0;}
-#mem .jj, #mem .hh, #mem .mn { width: 2em;}
-#mem .aa { width: 3em;}
-#mem input { padding: 1px; }
-#mem .mem-delete-timestamp { color:red; }
+#mem .inside { 
+	padding: 0; 
+	margin-bottom: 0;}
+#mem .jj,
+#mem .hh,
+#mem .mn { 
+	width: 2em;
+	}
+#mem .aa { 
+	width: 3em;
+}
+#mem input { 
+	padding: 1px; 
+}
+#mem .mem-delete-timestamp { 
+	color:red;
+}
 .mem-timestamp-wrap {
 	padding: 5px 0 7px 0;
 }
@@ -17,4 +28,28 @@
 }
 .mem-timestamp-wrap input {
 	font-size: 12px;
+}
+
+#mem .date-title { 
+	padding-left: 18px; 
+	background: url("../images/date-button.gif") no-repeat top left;  }
+
+/* MP6 overrides */
+.mp6 #mem .date-title { 
+	padding-left: 0;
+	background: none;	 
+}
+.mp6 #mem .date-title:before {
+	content: '\f145';
+	font: normal 20px/1 'dashicons';
+	speak: none;
+	display: inline-block;
+	padding: 0 2px 0 0;
+	top: 0;
+	left: -1px;
+	position: relative;
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+	text-decoration: none !important;
+	color: #888;
 }
