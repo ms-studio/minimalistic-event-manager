@@ -66,6 +66,10 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+# translators: Time, like 1:30 PM
+msgid "g:i a"
+msgstr ""
+
 # translators: Saturday 1st June 2013, 1:30 PM
 msgctxt "First day of month"
 msgid "l F jS Y, g:i a"
@@ -86,22 +90,48 @@ msgctxt "Other day of month"
 msgid "l, F jS Y"
 msgstr ""
 
-# translators: From January 1st...
-msgctxt "First day of month"
+# translators: (From) January 1st...
+msgctxt "First day of same month"
 msgid "F jS"
 msgstr ""
 
-# translators: From January 20th...
-msgctxt "Other day of month"
+# translators: (From) January 20th...
+msgctxt "Other day of same month"
 msgid "F jS"
 msgstr ""
 
-# translators: ...to February 1st
+# translators: ...to 15th 2013
+msgid "–jS Y"
+msgstr ""
+
+# translators: (From) January 1st...
+msgctxt "First day of diff month"
+msgid "F jS"
+msgstr ""
+
+# translators: (From) January 20th...
+msgctxt "Other day of diff month"
+msgid "F jS"
+msgstr ""
+
+
+# translators: ...to February 1st 2013
 msgctxt "First day of month"
 msgid " – F jS Y"
 msgstr ""
 
-# translators: ...to February 20th
+# translators: ...to February 20th 2013
 msgctxt "Other day of month"
 msgid " – F jS Y"
 msgstr ""
+
+# translators: (From) December 1st 2013...
+msgctxt "First day of diff year"
+msgid "F jS Y"
+msgstr ""
+
+# translators: (From) December 20th 2013...
+msgctxt "Other day of diff year"
+msgid "F jS Y"
+msgstr ""
+
