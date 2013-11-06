@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Minimalistic Event Management\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-07 15:14+0200\n"
-"PO-Revision-Date: 2013-10-16 23:31+0100\n"
+"PO-Revision-Date: 2013-11-05 14:40+0100\n"
 "Last-Translator: ms-studio <code@ms-studio.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -78,12 +78,12 @@ msgstr "Hhi"
 # translators: Saturday 1st June 2013, 1:30 PM
 msgctxt "First day of month"
 msgid "l F jS Y, g:i a"
-msgstr "l j\\e\\r F Y, Hhi"
+msgstr "l j\\e\\r F Y, H\\hi"
 
 # translators: Saturday 20th June 2013, 1:30 PM
 msgctxt "Other day of month"
 msgid "l F jS Y, g:i a"
-msgstr "l j F Y, Hhi"
+msgstr "l j F Y, H\\hi"
 
 # translators: Monday, January 1st 2013
 msgctxt "First day of month"
