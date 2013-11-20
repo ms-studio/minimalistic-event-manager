@@ -220,7 +220,7 @@ function mem_touch_time( $type = 'start', $custom_date = '', $repeat_count = 0 )
 
 	if (get_option( 'mem_edit_mode') == 'alpha') {
 		$alpha = '<input type="text" class="full-date-alpha" name="' . $type . '_full-date-alpha' . ( $repeat_count ? '_'.$repeat_count : '' );
-		$alpha .= '" value="' . $custom_date  . '" size="32" maxlength="32" autocomplete="off" />';
+		$alpha .= '" value="' . $custom_date  . '" size="32" autocomplete="off" />';
 		echo $alpha;
 	} else {
 
