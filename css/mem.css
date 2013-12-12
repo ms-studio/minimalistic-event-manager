@@ -31,15 +31,11 @@
 }
 
 #mem .date-title { 
-	padding-left: 18px; 
-	background: url("../images/date-button.gif") no-repeat top left;  }
-
-/* MP6 overrides */
-.mp6 #mem .date-title { 
 	padding-left: 0;
 	background: none;	 
 }
-.mp6 #mem .date-title:before {
+
+#mem .date-title:before {
 	content: '\f145';
 	font: normal 20px/1 'dashicons';
 	speak: none;
@@ -52,4 +48,19 @@
 	-webkit-font-smoothing: antialiased;
 	text-decoration: none !important;
 	color: #888;
+}
+
+/* Old Styling for 3.5 - 3.7 */
+
+.branch-3-5 .#mem .date-title,
+.branch-3-6 .#mem .date-title,
+.branch-3-7 .#mem .date-title {
+  padding-left: 18px; 
+  background: url("../images/date-button.gif") no-repeat top left; 
+}
+
+.branch-3-5 #mem .date-title:before,
+.branch-3-6 #mem .date-title:before,
+.branch-3-7 #mem .date-title:before {
+	content: '';
 }
