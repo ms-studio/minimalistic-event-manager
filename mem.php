@@ -40,7 +40,7 @@ function mem_plugin_settings( $post_types = array('all'), $edit_mode = 'full' ) 
 
 	$types = array();
 
-	if ( array_shift(array_values($post_types)) == 'all' ) {
+	if ( reset($post_types) == 'all' ) {
 		$types = get_post_types(array('public' => true, 'show_ui' => true));
 
 	} else {
@@ -75,7 +75,7 @@ function mem_add_metaboxes(){
 
 	// check needed only on first plugin run, after this, the default option will contain
 	// an array of all public post types
-	if ( array_shift(array_values($post_types)) == 'all' ) {
+	if ( reset($post_types) == 'all' ) {
 		$post_types = get_post_types(array('public' => true, 'show_ui' => true));
 	}
 
