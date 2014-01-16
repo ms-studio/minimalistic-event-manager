@@ -8,13 +8,14 @@ msgstr ""
 "Project-Id-Version: Minimalistic Event Management\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-07 15:14+0200\n"
-"PO-Revision-Date: 2013-11-05 14:40+0100\n"
+"PO-Revision-Date: 2014-01-15 14:35+0100\n"
 "Last-Translator: ms-studio <code@ms-studio.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.3\n"
+"Language: fr_FR\n"
 
 #: mem.php:83
 msgid "Event Dates"
@@ -73,7 +74,7 @@ msgstr "Effacer"
 
 # translators: Time, like 1:30 PM
 msgid "g:i a"
-msgstr "Hhi"
+msgstr "H\\hi"
 
 # translators: Saturday 1st June 2013, 1:30 PM
 msgctxt "First day of month"
