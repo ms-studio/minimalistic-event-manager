@@ -305,8 +305,11 @@ function mem_save_date( $id, $post ) {
 							$date .= "-" . zeroise( $day, 2 );
 							if ( !empty($hour) ) {
 								$date .= " " . zeroise( $hour, 2 );
-								if ( !empty($minute) )
+								if ( !empty($minute) ) {
 									$date .= ":" . $minute;
+								} else {
+									$date .= ":00";
+								}
 							}
 						}
 					}
@@ -383,8 +386,11 @@ function mem_save_date( $id, $post ) {
 					$date .= "-" . zeroise( $day, 2 );
 					if ( !empty($hour) ) {
 						$date .= " " . zeroise( $hour, 2 );
-						if ( !empty($minute) )
+						if ( !empty($minute) ) {
 							$date .= ":" . $minute;
+						} else {
+							$date .= ":00";
+						}
 					}
 				}
 			}
