@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: Minimalistic Event Management\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-07 15:14+0200\n"
-"PO-Revision-Date: 2014-01-15 14:35+0100\n"
+"PO-Revision-Date: 2014-03-17 17:13+0100\n"
 "Last-Translator: ms-studio <code@ms-studio.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.4\n"
 "Language: fr_FR\n"
 
 #: mem.php:83
@@ -108,7 +108,7 @@ msgstr "\\d\\u j"
 
 # translators: ...to 15th 2013
 msgid "–jS Y"
-msgstr " \\a\\u j F"
+msgstr " \\a\\u j F Y"
 
 # translators: (From) January 1st...
 msgctxt "First day of diff month"
