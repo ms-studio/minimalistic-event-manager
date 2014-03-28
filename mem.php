@@ -472,7 +472,13 @@ add_option( 'mem_edit_mode', 'full' );
 $all_post_types = get_post_types(array('public' => true, 'show_ui' => true));
 add_option( 'mem_post_types', $all_post_types);
 
-// add the hook as late as possible
+// Widgets
+include_once (plugin_dir_path(__FILE__).'widgets/event-list.php');
+
+// Functions
+include_once (plugin_dir_path(__FILE__).'functions/date-function.php');
+
+// Add the hook as late as possible
 add_action( 'admin_init', 'add_mem_hook', 100);
 add_action( 'admin_init', 'mem_add_metaboxes', 101 );
 add_action( 'admin_enqueue_scripts', 'mem_js' );
