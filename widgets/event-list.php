@@ -156,14 +156,21 @@ class mem_event_list extends WP_Widget {
 					$show_past_events = isset( $instance['show_past_events'] ) ? $instance['show_past_events'] : false;
 					
 					$mem_today = mem_date_of_today();
+					
+					// user defined age limit. default = 7 days.
 					$mem_age = ( $age * DAY_IN_SECONDS );
-					$mem_unix_limit = ( $mem_today["unix"] - $mem_age );
-					$mem_age_limit = date( "Y-m-d", $mem_unix_limit);
-			
+					$mem_age_limit_unix = ( $mem_today["unix"] - $mem_age );
+					$mem_age_limit_iso = date( "Y-m-d", $mem_age_limit_unix);					
+					
+					// arbitrary six months limit for filtering out old events.
+					$mem_six_months = ( 180 * DAY_IN_SECONDS );
+					$mem_180day_unix = ( $mem_today["unix"] - $mem_six_months );
+					$mem_180day_iso = date( "Y-m-d", $mem_180day_unix);
+					
 					$r = new WP_Query( apply_filters( 'widget_posts_args', array( 
 						'posts_per_page' => $number, 
 						'meta_key' => '_mem_start_date',
-						'meta_value' => $mem_age_limit,
+						'meta_value' => $mem_180day_iso,
 						'meta_compare' => '>=',
 						'orderby' => 'meta_value',
 						'order' => 'DESC', // DESC = newest first
@@ -173,7 +180,7 @@ class mem_event_list extends WP_Widget {
 						) ) );
 					if ($r->have_posts()) :
 					
-					// initialzize new array:
+					// initialzize new array to store events
 					$mem_event_list = array();
 					
 			?>
@@ -201,15 +208,15 @@ class mem_event_list extends WP_Widget {
 							    	"permalink" => get_permalink(),
 							 );
 							 
-							 // check for REPEAT fields, add them also
+							 // check for "Repeat" fields, add them to the list.
 							 	
 							 	$date_repeats = get_post_meta(get_the_ID(), '_mem_repeat_date', false);
 							 	
-							 	if ($date_repeats) {
+							 	if (!empty($date_repeats)) {
 							 		foreach($date_repeats as $date_repeat) {
 							 				
-							 				// TEST if it is fresh enough
-							 				if ( $date_repeat >= $mem_age_limit ) {
+							 				// Test if it is fresh enough
+							 				if ( $date_repeat >= $mem_age_limit_iso ) {
 							 					
 							 					// format date
 							 					$mem_repeat_date =  mem_date_processing( 
@@ -230,16 +237,24 @@ class mem_event_list extends WP_Widget {
 						
 					endwhile; 
 							
-							// do something with the $mem_event_list
+							// Do something with the $mem_event_list
 							
-							// 1. re-order based on start-iso
+							// 1. filter the dates with $mem_age_limit_unix
+							
+							$mem_event_list = array_filter(
+									$mem_event_list, 
+									function($i) use ($mem_age_limit_unix) { 
+											return $i['start-unix'] >= $mem_age_limit_unix; 
+							});
+							
+							// 2. re-order the dates, based on start-unix
 							
 							function mem_custom_sort_iso($a,$b) {
 									return $a['start-unix']>$b['start-unix'];
 							}
 							usort($mem_event_list, "mem_custom_sort_iso");
 							
-							// 2. generate the frontend output
+							// 3. generate the frontend output
 							
 							foreach ($mem_event_list as $key => $item) {
 							
