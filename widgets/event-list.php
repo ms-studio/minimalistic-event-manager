@@ -184,9 +184,7 @@ class mem_event_list extends WP_Widget {
 					$mem_event_list = array();
 					
 			?>
-					<?php echo $before_widget; ?>
-					<?php if ( $title ) echo $before_title . $title . $after_title; ?>
-					<ul>
+					
 					<?php while ( $r->have_posts() ) : $r->the_post(); ?>
 					<?php 
 										// add item to array.
@@ -256,25 +254,34 @@ class mem_event_list extends WP_Widget {
 							
 							// 3. generate the frontend output
 							
-							foreach ($mem_event_list as $key => $item) {
+							if (!empty($mem_event_list) ) {
+									
+									echo $before_widget;
+									if ( $title ) echo $before_title . $title . $after_title;
+									echo '<ul>';
 							
-									?>
-									<li>
-										<span class="post-date"><?php 
-											echo $mem_event_list[$key]["date-num"];
-										?> &ndash; </span>
-									<a href="<?php echo $mem_event_list[$key]["permalink"]; ?>">	
-											<?php echo $mem_event_list[$key]["title"]; ?></h4></a>
-									</li>
-											<?php 
+									foreach ($mem_event_list as $key => $item) {
+									
+											?>
+											<li>
+												<?php 
+													if ($show_date == true) {
+														echo '<span class="post-date">';
+														echo $mem_event_list[$key]["date-num"];
+														echo '&ndash; </span>';
+													} 
+												?>
+											<a href="<?php echo $mem_event_list[$key]["permalink"]; ?>">	
+													<?php echo $mem_event_list[$key]["title"]; ?></h4></a>
+											</li>
+													<?php 
+									}
+									
+									echo '</ul>';
+									echo $after_widget;
+									
 							}
 					
-					?>
-					</ul>
-					<?php 
-					
-					echo $after_widget; ?>
-			<?php
 					// Reset the global $the_post as this query will have stomped on it
 					wp_reset_postdata();
 			
