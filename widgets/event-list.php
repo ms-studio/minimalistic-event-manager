@@ -268,7 +268,7 @@ class mem_event_list extends WP_Widget {
 													if ($show_date == true) {
 														echo '<span class="post-date">';
 														echo $mem_event_list[$key]["date-num"];
-														echo '&ndash; </span>';
+														echo ' &ndash; </span>';
 													} 
 												?>
 											<a href="<?php echo $mem_event_list[$key]["permalink"]; ?>">	
