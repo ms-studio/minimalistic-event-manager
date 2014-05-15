@@ -18,7 +18,7 @@ function mem_date_of_today() {
    $mem_dates_array = array(
        "today-now" => date_i18n( "j F Y - H:i:s"),
        "today" => date_i18n( "j F Y"),
-       "today" => date("Y-m-d"),
+       "iso" => date("Y-m-d"),
        "unix" => strtotime( date("Y-m-d") ),
        "isoweek" => date("W"),
        // current year info
