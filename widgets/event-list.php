@@ -19,8 +19,15 @@
  *
  **/
 
-class mem_event_list extends WP_Widget {
+function mem_custom_sort_iso($a,$b) {
+		return $a['start-unix']>$b['start-unix'];
+}
 
+class mem_event_list extends WP_Widget {
+		
+		
+		
+		
 		/**
 		 * Register widget with WordPress.
 		 */
@@ -55,32 +62,39 @@ class mem_event_list extends WP_Widget {
 					$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 					$number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
 					$age       = isset( $instance['age'] ) ? absint( $instance['age'] ) : 7;
+					$show_past_events = isset( $instance['show_past_events'] ) ? (bool) $instance['show_past_events'] : false;
 					$show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
+					$post_types = isset( $instance['post_types'] ) ? esc_attr( $instance['post_types'] ) : 'post';
 			
-					// title field
+					// 1: title field
 			?>
 					<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 					<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
 			<?php 
-					// Number of posts to show
+					// 2: Number of posts to show
 			 ?>
-					<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
+					<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to display:' ); ?></label>
 					<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
 			<?php 
-					// Age of posts
+					// 3: Age of posts
 			 ?>
 					<p><label for="<?php echo $this->get_field_id( 'age' ); ?>"><?php _e( 'Age of posts (in days):' ); ?></label>
 					<input id="<?php echo $this->get_field_id( 'age' ); ?>" name="<?php echo $this->get_field_name( 'age' ); ?>" type="text" value="<?php echo $age; ?>" size="3" /></p>		
 			<?php 
-					// Show past events?
+					// 4: Show past events?
 			 ?>
 					<p><input class="checkbox" type="checkbox" <?php checked( $show_past_events ); ?> id="<?php echo $this->get_field_id( 'show_past_events' ); ?>" name="<?php echo $this->get_field_name( 'show_past_events' ); ?>" />
 					<label for="<?php echo $this->get_field_id( 'show_past_events' ); ?>"><?php _e( 'Display past events?', 'mem' ); ?></label></p>
 				<?php 
-						// Display the date?
+						// 5: Display the date?
 				 ?>
 					<p><input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
 					<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display event date?', 'mem' ); ?></label></p>
+			<?php
+						// 6: Post types to display
+			?>
+					<p><label for="<?php echo $this->get_field_id( 'post_types' ); ?>"><?php _e( 'Post types to display:' ); ?></label>
+					<input class="widefat" id="<?php echo $this->get_field_id( 'post_types' ); ?>" name="<?php echo $this->get_field_name( 'post_types' ); ?>" type="text" value="<?php echo $post_types; ?>" /></p>
 			<?php
 			
 		} // function form()
@@ -103,6 +117,8 @@ class mem_event_list extends WP_Widget {
 					$instance['age'] = (int) $new_instance['age'];
 					$instance['show_date'] = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
 					$instance['show_past_events'] = isset( $new_instance['show_past_events'] ) ? (bool) $new_instance['show_past_events'] : false;
+					$instance['post_types'] = strip_tags($new_instance['post_types']);
+					
 					$this->flush_widget_cache();
 			
 					$alloptions = wp_cache_get( 'alloptions', 'options' );
@@ -155,6 +171,9 @@ class mem_event_list extends WP_Widget {
 					
 					$show_past_events = isset( $instance['show_past_events'] ) ? $instance['show_past_events'] : false;
 					
+					$post_types = ( ! empty( $instance['post_types'] ) ) ? $instance['post_types'] : 'post';
+					$post_types = explode(',', $post_types);
+					
 					$mem_today = mem_date_of_today();
 					
 					// user defined age limit. default = 7 days.
@@ -166,8 +185,9 @@ class mem_event_list extends WP_Widget {
 					$mem_six_months = ( 180 * DAY_IN_SECONDS );
 					$mem_180day_unix = ( $mem_today["unix"] - $mem_six_months );
 					$mem_180day_iso = date( "Y-m-d", $mem_180day_unix);
-					
+										
 					$r = new WP_Query( apply_filters( 'widget_posts_args', array( 
+						'post_type' => $post_types,
 						'posts_per_page' => $number, 
 						'meta_key' => '_mem_start_date',
 						'meta_value' => $mem_180day_iso,
@@ -206,14 +226,14 @@ class mem_event_list extends WP_Widget {
 							    	"permalink" => get_permalink(),
 							 );
 							 
-							 // check for "Repeat" fields, add them to the list.
+							 // check for "Repeat" fields, add them to the list as unique events.
 							 	
 							 	$date_repeats = get_post_meta(get_the_ID(), '_mem_repeat_date', false);
 							 	
 							 	if (!empty($date_repeats)) {
 							 		foreach($date_repeats as $date_repeat) {
 							 				
-							 				// Test if it is fresh enough
+							 				// Test if the item is fresh enough
 							 				if ( $date_repeat >= $mem_age_limit_iso ) {
 							 					
 							 					// format date
@@ -235,7 +255,7 @@ class mem_event_list extends WP_Widget {
 						
 					endwhile; 
 							
-							// Do something with the $mem_event_list
+							// Filtering the $mem_event_list
 							
 							// 1. filter the dates with $mem_age_limit_unix
 							
@@ -247,9 +267,6 @@ class mem_event_list extends WP_Widget {
 							
 							// 2. re-order the dates, based on start-unix
 							
-							function mem_custom_sort_iso($a,$b) {
-									return $a['start-unix']>$b['start-unix'];
-							}
 							usort($mem_event_list, "mem_custom_sort_iso");
 							
 							// 3. generate the frontend output
