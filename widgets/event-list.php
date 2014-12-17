@@ -26,8 +26,6 @@ function mem_custom_sort_iso($a,$b) {
 class mem_event_list extends WP_Widget {
 		
 		
-		
-		
 		/**
 		 * Register widget with WordPress.
 		 */
@@ -200,7 +198,7 @@ class mem_event_list extends WP_Widget {
 						) ) );
 					if ($r->have_posts()) :
 					
-					// initialzize new array to store events
+					// initialize new array to store events
 					$mem_event_list = array();
 					
 			?>
@@ -233,12 +231,11 @@ class mem_event_list extends WP_Widget {
 							 	if (!empty($date_repeats)) {
 							 		foreach($date_repeats as $date_repeat) {
 							 				
-							 				// Test if the item is fresh enough
+							 				// test if the item is fresh enough
 							 				if ( $date_repeat >= $mem_age_limit_iso ) {
 							 					
 							 					// format date
-							 					$mem_repeat_date =  mem_date_processing( 
-							 						$date_repeat, '' );
+							 					$mem_repeat_date =  mem_date_processing( $date_repeat, '' );
 							 					
 							 					// add item to array
 							 					$mem_event_list[] = array( 
