@@ -3,8 +3,8 @@ Contributors: de-ce, tar.gz
 Donate link: https://flattr.com/thing/972318/
 Tags: dates, events, time
 Requires at least: 3.0
-Tested up to: 3.9
-Stable tag: 1.0.5
+Tested up to: 4.1
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,19 @@ Of course, here: [https://github.com/ms-studio/minimalistic-event-manager/](http
 3. An event with start date, repeating twice.
 
 == Changelog ==
+
+= 1.0.7 =
+
+* do not load the widget code if PHP is lower than 5.3. 
+
+= 1.0.6 =
+
+* version bump (fixing an issue in 1.0.5 where the funtions directory wasn't included).
+
+= 1.0.5 =
+
+* adding a widget to display a list of events on the frontend.
+* adding a function that facilitates custom display of event information.
 
 = 1.0.4 =
 * adapting to post-MP6 dashboard design
