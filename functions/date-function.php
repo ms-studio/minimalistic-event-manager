@@ -46,19 +46,21 @@ function mem_date_of_today() {
 // NOTE: regarding translation:
 // http://codex.wordpress.org/I18n_for_WordPress_Developers
 
-// Use the textdomain of the MEM plugin: 
+// Using the textdomain of the MEM plugin: 
 // example: __('Event Dates', 'mem')
 // example: _x('Event Dates', 'context explanation', 'mem')
 
 
 function mem_date_processing($start_date, $end_date) {
 
-			// initalize our variables
+			// Initalizing our variables
+			
 			$start_date_iso = $start_date;
 			$end_date_iso = $end_date;
 			
 			$event_date = '';
 			$event_date_short = '';
+			$event_date_basic = '';
 			$event_date_num = '';
 			$event_date_yr = '';
 			
@@ -74,7 +76,8 @@ function mem_date_processing($start_date, $end_date) {
 			$ndash = '<span class="ndash">–</span>';
 						
 				
-			// step 1 // test and define start date values
+			// Step 1 - test and define start date values
+			// ******************************************
 			
 			if ($start_date !== "" ) { 
 					
@@ -132,7 +135,9 @@ function mem_date_processing($start_date, $end_date) {
 					
 			}
 			
-			// step 2 // test and define END date values
+			
+			// Step 2 - test and define END date values
+			// ****************************************
 		
 		if ($end_date !== "" ) { 
 								
@@ -151,36 +156,39 @@ function mem_date_processing($start_date, $end_date) {
 								$end_date_iso = substr_replace($end_date, 'T', 10 , 1);
 								
 						} else {
+								
+								// shorter than 10 digits =
+								// DAY is defined, but no time
 						
-								// day is defined, but no time
-						
-						} // 10
+						} // end testing for 10 digits
 							
-					} else { // 7
+					} else { 
+					
+							// shorter than 7 digits = 
+							// MONTH is defined, but no day
 							
-							// the MONTH is defined, but no day
-							
+							// default end day for ISO date stamp
 							$end_date_iso .= '-31';
 							
-					} // 7
+					} // end testing for 7 digits
 					
 						$unix_end = strtotime($end_date_iso);
 						
 						$end_year = date( "Y", $unix_end);
 						$end_month = date_i18n( "F", $unix_end);
 				
-				} else { // 5
+				} else {
 				
+						// shorter than 5 digits = 
 						// only the YEAR is defined
 				
 						$end_year = $end_date;
 						
-						// fix for $unix_end:
-						
+						// default end month/day for ISO date stamp
 						$end_date_iso .= '-12-31';
 						$unix_end = strtotime($end_date_iso);
 						
-				} // 5
+				} // end testing for 5 digits
 				
 				if ($end_year != $start_year ) {
 					$event_date_yr .= $ndash . $end_year;
@@ -200,9 +208,11 @@ function mem_date_processing($start_date, $end_date) {
 				 		Why do we define those values if no end date exists?
 				  
 				  A: 
-				 		Because this allows us to order a series of events by end date,
-				 		even if the end date isn't defined.
-				 		Important: we don't change the $end_date value.
+				 		Because they allow us to sort a series of events by their end date
+				 		- even if the end date isn't defined (in which case the start date is used).
+				 		
+				 		Important: we don't change the $end_date value. 
+				 		The $end_date value can be used to test if the user entered an end date.
 				 		
 				*/
 		
@@ -210,17 +220,18 @@ function mem_date_processing($start_date, $end_date) {
 			
 			// 3) process the values
 			
-			// condition 1: do we have a start date?
+			// Condition 1: do we have a start date?
+			// *************************************
 			
 			if ($start_date !== "" ) {
 					
-				// Yes? - Condition 2: do we have more than 5 chars ?
-				// **************************************************
+				// Condition 2: is the MONTH defined ?
+				// ***********************************
 				
-				if (strlen($start_date) > 5) { // yes = MONTH is defined
+				if (strlen($start_date) > 5) {
 				
-					// Yes? - Condition 3: do we have an end date ?
-					// ********************************************
+					// Condition 3: do we have an end date ?
+					// *************************************
 							
 						if ($end_date !== "" ) {
 						
@@ -230,17 +241,19 @@ function mem_date_processing($start_date, $end_date) {
 							// Condition 4: does start/end occur in the same year?
 							// ***************************************************
 							
-							if ($start_year == $end_year) { // YES, same YEAR!
+							if ($start_year == $end_year) { // YES, same YEAR
 								
 								// Condition 5: do start/end occur the same month?
 								// ***********************************************
 								
-								if ($start_month == $end_month) { // YES, same MONTH!
+								if ($start_month == $end_month) { // YES, same MONTH
 								
-								  // test if start DAY is defined
+								  // We could test if start DAY is defined - but since we have start/end date,
+								  // and it's the same month, we can assume DAY is defined.
+								  // Exception: November - 15th December.
 			
-									// 4) test if start/end occurs the same day
-									// ********************************
+									// Condition 6: do start/end occur the same day?
+									// *********************************************
 									
 									$start_day = date( "j", $unix_start); // j = 1 to 31
 									$end_day = date( "j", $unix_end);
@@ -253,9 +266,17 @@ function mem_date_processing($start_date, $end_date) {
 											// *****************************************
 											
 												if ( (date( "j", $unix_start)) == 1) { // 1er
+												
 												  $event_date = date_i18n( _x('l F jS Y, g:i a','First day of month','mem'), $unix_start);
+												
+													$event_date_basic = date_i18n( _x('F j','First day of month','mem'), $unix_start);
+													
 												} else {
+												
 												  $event_date = date_i18n( _x('l F jS Y, g:i a','Other day of month','mem'), $unix_start);
+												
+													$event_date_basic = date_i18n( _x('F j','Other day of month','mem'), $unix_start);
+												
 												}
 												
 												// add the end time
@@ -264,20 +285,31 @@ function mem_date_processing($start_date, $end_date) {
 												// numbers only: 31.12.2014 
 												 $event_date_num = date( __('j.n.Y','mem'), $unix_start);
 									
-									} else { // two different days, but same month.
+									} else { // two different days, but SAME month.
 									
-												// March 4th-15th 2013
+												// Example: March 4th-15th 2013
 										
 												if ( (date( "j", $unix_start)) == 1) { // 1er
+												
 												  $event_date = date_i18n( _x( 'F jS', 'First day of same month', 'mem' ), $unix_start); // \D\u j\e\\r
+												  
+												  $event_date_basic = date_i18n( _x('F j','First day of month','mem'), $unix_start);
+												  
+												
 												} else {
+												
 												  $event_date = date_i18n( _x( 'F jS', 'Other day of same month', 'mem' ), $unix_start); // Du 3 ...	// \D\u j
+												  
+												  $event_date_basic = date_i18n( _x('F j','Other day of same month','mem'), $unix_start);
+												
 												}
 												
-												// end = cannot be 1st!
+												// Add END date
 												
 												  $event_date .= date_i18n( __( '–jS Y', 'mem' ), $unix_end);	
 												// au 17 mars 2012
+												
+													$event_date_basic .= date_i18n( _x('–j','mem'), $unix_end);
 												
 												$event_date_num = date( __('j','mem'), $unix_start);
 												$event_date_num .= $ndash . date( __('j.n.Y','mem'), $unix_end);
@@ -328,18 +360,18 @@ function mem_date_processing($start_date, $end_date) {
 								
 							} else { // ELSE condition 4 // 
 							
-							// START YEAR different from END YEAR
-							// **********************************
+							// START YEAR is different from END YEAR
+							// *************************************
 							
-										// note: we KNOW that start month IS defined.
-										$event_date_short = date_i18n( "F Y", $unix_start); // janvier 2010 ...
+										// note: we already KNOW that start month IS defined.
+										$event_date_short = date_i18n( "F Y", $unix_start); // janvier 2010
 								
 								// condition 5-A // is START DAY defined?
 								// **************************************
 								
 								if (strlen($start_date) > 7) { // START DAY is defined
 								
-								   // December 15th 2013 - January 3rd 2014 
+								   // Example = December 15th 2013 - January 3rd 2014 
 								
 										if ( (date_i18n( "j", $unix_start)) == 1) { // 1er
 										  $event_date = date_i18n( _x( 'F jS Y', 'First day of diff year', 'mem' ), $unix_start);
@@ -426,17 +458,17 @@ function mem_date_processing($start_date, $end_date) {
 												} else {
 												  $event_date = date_i18n( _x('l, F jS Y', 'Other day of month', 'mem'), $unix_start);
 												}
-										} // END condition 5 // end testing for TIME.
+										} // END condition 5 : end testing for TIME.
 									
-								} else { // ELSE condition 4 // START DAY is not defined.
+								} else { // ELSE condition 4 : START DAY is not defined.
 								
 									$event_date = $event_date_short;
 									
 									$event_date_num = date( __('n.Y','mem'), $unix_start);
 								
-								} // END condition 4 // end testing for START DAY //
+								} // END condition 4 // end testing for START DAY.
 								
-							} // END condition 3 (end_date testing) //
+							} // END condition 3 (end_date testing).
 						
 					} else { // condition 2 // start date > 5 // START YEAR only is defined //
 					
@@ -461,8 +493,6 @@ function mem_date_processing($start_date, $end_date) {
 		// is this a future event?
 		$mem_today = mem_date_of_today();
 		
-		//global $mem_unix_now;
-		
 		if ( $mem_today["unix"] <= $unix_start ) {
 			$event_is_future = true;
 		}
@@ -478,7 +508,8 @@ function mem_date_processing($start_date, $end_date) {
 			$event_date_array = array(
 			    "date" => $event_date, // Jeudi 19 septembre 2013
 			    "date-short" => $event_date_short,
-			    "date-num" => $event_date_num,
+			    "date-basic" => $event_date_basic,
+			    "date-num" => $event_date_num, // 19.11.2013
 			    
 			    "start-iso" => $start_date_iso,
 			    "end-iso" => $end_date_iso,
