@@ -47,10 +47,8 @@ function mem_plugin_settings( $post_types = array('all'), $edit_mode = 'full' ) 
 		foreach($post_types as $type) {
 			if ( post_type_exists($type) )
 				$types[] = $type;
+		}
 	}
-}
-
-
 
 	update_option( 'mem_post_types', $types);
 
@@ -62,7 +60,8 @@ function mem_plugin_settings( $post_types = array('all'), $edit_mode = 'full' ) 
 			update_option( 'mem_edit_mode', 'alpha' );
 			break;
 	}
-}
+	
+} // end mem_plugin_settings()
 
 
 /**
@@ -78,8 +77,6 @@ function mem_add_metaboxes(){
 	if ( reset($post_types) == 'all' ) {
 		$post_types = get_post_types(array('public' => true, 'show_ui' => true));
 	}
-
-
 
 	// no need to further validate the data.
 	// the function wich alter settings validates post types before saving
@@ -264,7 +261,6 @@ function mem_save_date( $id, $post ) {
 	if ( !in_array($post->post_type, $mem_post_types) )
 		return;
 
-
 	// check nonce
 	$nonce = isset($_REQUEST['_mem_nonce']) ? $_REQUEST['_mem_nonce'] : '';
 	if ( !wp_verify_nonce( $nonce , plugin_basename( __FILE__ ) ) )
@@ -362,10 +358,10 @@ function mem_save_date( $id, $post ) {
 				}
 				$count_repeats++;
 
-			}
+			} // end testing for 'repeat' type
 
 			continue;
-		}
+		} // end foreach $types
 
 
 

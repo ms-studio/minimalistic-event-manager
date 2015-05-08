@@ -14,7 +14,7 @@ function mem_date_of_today() {
    // current year info
    $mem_current_year = date("Y");
    
-   // build an ARRAY to return:
+   // build the array that will be returned:
    $mem_dates_array = array(
        "today-now" => date_i18n( "j F Y - H:i:s"),
        "today" => date_i18n( "j F Y"),
