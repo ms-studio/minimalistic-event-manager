@@ -276,7 +276,7 @@ function mem_save_date( $id, $post ) {
 
 		if ($type == 'repeat') {
 			$count_repeats = 1;
-			$total_repeats = $_POST['mem_total_repeats'];
+			$total_repeats = isset($_POST['mem_total_repeats']) ? $_POST['mem_total_repeats'] : 0;
 
 			while ( $count_repeats <= $total_repeats ) {
 
