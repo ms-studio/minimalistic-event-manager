@@ -286,7 +286,7 @@ class mem_event_list extends WP_Widget {
 													} 
 												?>
 											<a href="<?php echo $mem_event_list[$key]["permalink"]; ?>">	
-													<?php echo $mem_event_list[$key]["title"]; ?></h4></a>
+													<?php echo $mem_event_list[$key]["title"]; ?></a>
 											</li>
 													<?php 
 									}
