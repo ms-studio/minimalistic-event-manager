@@ -25,7 +25,6 @@ function mem_custom_sort_iso($a,$b) {
 
 class mem_event_list extends WP_Widget {
 		
-		
 		/**
 		 * Register widget with WordPress.
 		 */
