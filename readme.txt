@@ -24,13 +24,15 @@ The MEM plugin offers a clean interface that allows to add _event dates_ (start 
 
 = What the plugin doesn’t do =
 
-The MEM plugin works as a simple interface for entering those dates into custom fields, but it won’t do anything on the public side of your theme. What happens with the dates on the front-end is entirely up to you! You must decide how to display the dates, and you will have to edit your theme files for that…
+The MEM plugin works as a simple interface for entering those dates into custom fields, but it won’t do much on the public side of your theme (there's a simple widget for displaying a list of events).
+
+The plugin was created primarily to enable theme developers to create their own display of events on the front-end.
 
 If you aren’t sure how to achieve this, [our wiki](https://github.com/ms-studio/minimalistic-event-manager/wiki) will provide a collection of examples to get you started.
 
 = Technical implementation =
 
-Technically, the MEM plugin stores the dates as ordinary Custom Fields, in a _machine-readable_ format (such as "2012-11-23 13:37"). This gives you absolute freedom for displaying your events in your theme:
+Technically, the MEM plugin stores the dates as ordinary Custom Fields, in a _machine-readable_ format (such as "2016-11-23 13:37"). This gives you absolute freedom for displaying your events in your theme:
 
 - You can query for specific date ranges by using the meta_key / meta_compare parameters.
 - You can use the php `date` function to display the date in any possible manner (or `date_i18n` for proper localization).
@@ -51,7 +53,7 @@ See the online documentation for the full instructions.
 = Credits =
 
 - **Concept and maintenance** [ms-studio.net](http://ms-studio.net)
-- **Development**: [Dream Production](http://dreamproduction.net/)
+- **Initial development**: [Dream Production](http://dreamproduction.net/)
 
 == Installation ==
 
@@ -84,9 +86,15 @@ Of course, here: [https://github.com/ms-studio/minimalistic-event-manager/](http
 
 == Changelog ==
 
+= 1.0.8 =
+
+* widget bugfix: when number of upcoming events is greater than display limit, events in the near future should be displayed first.
+* removed useless html tag in widget output, thanks to @macemmek
+* fixed warning message, thanks to @danhollywells
+
 = 1.0.7 =
 
-* do not load the widget code if PHP is lower than 5.3. 
+* do not load the widget code if PHP is lower than 5.3, to avoid white screen of death.
 
 = 1.0.6 =
 
