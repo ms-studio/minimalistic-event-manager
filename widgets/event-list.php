@@ -25,6 +25,7 @@ function mem_custom_sort_iso($a,$b) {
 
 class mem_event_list extends WP_Widget {
 		
+		
 		/**
 		 * Register widget with WordPress.
 		 */
@@ -185,7 +186,7 @@ class mem_event_list extends WP_Widget {
 										
 					$r = new WP_Query( apply_filters( 'widget_posts_args', array( 
 						'post_type' => $post_types,
-						'posts_per_page' => $number, 
+						'posts_per_page' => -1, // $number ... will be used later!
 						'meta_key' => '_mem_start_date',
 						'meta_value' => $mem_180day_iso,
 						'meta_compare' => '>=',
@@ -253,19 +254,62 @@ class mem_event_list extends WP_Widget {
 							
 							// Filtering the $mem_event_list
 							
-							// 1. filter the dates with $mem_age_limit_unix
 							
-							$mem_event_list = array_filter(
-									$mem_event_list, 
+							// 1. re-order the dates, based on start-unix
+							
+							usort($mem_event_list, "mem_custom_sort_iso");
+							
+							// 2. filter out OLD dates, with $mem_age_limit_unix
+							
+							$mem_event_list = array_filter( $mem_event_list, 
 									function($i) use ($mem_age_limit_unix) { 
 											return $i['start-unix'] >= $mem_age_limit_unix; 
 							});
 							
-							// 2. re-order the dates, based on start-unix
+							if ( count($mem_event_list) <= $number ) {
+
+								// The total amount of events fits our limit - great!
+								// Nothing else to do, continue to next step.
 							
-							usort($mem_event_list, "mem_custom_sort_iso");
+							} else {
+
+								// Too many events, we have to trim them...
+								// Let's calculate the number of FUTURE events:
+								
+								$mem_future_event_list = array_filter( $mem_event_list, 
+										function($i) use ( $mem_today ) { 
+												return $i['start-unix'] >= $mem_today["unix"]; 
+								});
+								
+								
+								/*
+								 * Note: there's an edge case that we don't handle:
+								 * Too many past events, but very little future events
+								 * We could calculate exactly how many past events we can show...
+								 * Work for volunteers!
+								*/
+								
+								if ( count($mem_future_event_list) <= $number ) {
+									
+									// Total of FUTURE events fits our limit - great!
+									// Redefine array to use:
+									
+									$mem_event_list = $mem_future_event_list;
+									
+									// Nothing else to do, continue to next step.
+									
+								} else {
+
+									// Too many upcoming events...
+									// We need to shorten our array!
+									
+									$mem_event_list = array_slice($mem_future_event_list, 0, $number);
+									
+								}
+								// 
+							}
 							
-							// 3. generate the frontend output
+							// 3. Finally, generate the frontend output
 							
 							if (!empty($mem_event_list) ) {
 									
