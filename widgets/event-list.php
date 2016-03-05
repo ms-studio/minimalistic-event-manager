@@ -324,7 +324,11 @@ class mem_event_list extends WP_Widget {
 												<?php 
 													if ($show_date == true) {
 														echo '<span class="post-date">';
-														echo $mem_event_list[$key]["date-num"];
+														echo apply_filters(
+															'mem_event_date_display',
+															$mem_event_list[$key]["date-num"],
+															$mem_event_list[$key]
+														);
 														echo ' &ndash; </span>';
 													} 
 												?>
