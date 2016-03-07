@@ -86,6 +86,10 @@ Of course, here: [https://github.com/ms-studio/minimalistic-event-manager/](http
 
 == Changelog ==
 
+= 1.0.9 =
+
+* widget improvement: added filter (mem_event_date_display) that allows to customize the widget date format.
+
 = 1.0.8 =
 
 * widget bugfix: when number of upcoming events is greater than display limit, events in the near future should be displayed first.
