@@ -33,9 +33,9 @@ class mem_event_list extends WP_Widget {
 			
 			parent::__construct(
 				'mem_event_list', // Base ID
-				__('Event List (mem)', 'mem'), // Name
+				__('Event List (mem)', 'minimalistic-event-manager'), // Name
 				array( 
-					'description' => __( 'Display a list of events', 'mem' ), 
+					'description' => __( 'Display a list of events', 'minimalistic-event-manager' ), 
 					'classname' => 'mem_event_list',
 				) // Args
 			); // parent::__construct
@@ -82,12 +82,12 @@ class mem_event_list extends WP_Widget {
 					// 4: Show past events?
 			 ?>
 					<p><input class="checkbox" type="checkbox" <?php checked( $show_past_events ); ?> id="<?php echo $this->get_field_id( 'show_past_events' ); ?>" name="<?php echo $this->get_field_name( 'show_past_events' ); ?>" />
-					<label for="<?php echo $this->get_field_id( 'show_past_events' ); ?>"><?php _e( 'Display past events?', 'mem' ); ?></label></p>
+					<label for="<?php echo $this->get_field_id( 'show_past_events' ); ?>"><?php _e( 'Display past events?', 'minimalistic-event-manager' ); ?></label></p>
 				<?php 
 						// 5: Display the date?
 				 ?>
 					<p><input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
-					<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display event date?', 'mem' ); ?></label></p>
+					<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display event date?', 'minimalistic-event-manager' ); ?></label></p>
 			<?php
 						// 6: Post types to display
 			?>

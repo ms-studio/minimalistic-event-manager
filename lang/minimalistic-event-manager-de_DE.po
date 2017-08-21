@@ -6,21 +6,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Minimalistic Event Management\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-07 15:14+0200\n"
-"PO-Revision-Date: 2013-09-20 17:20+0100\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/minimalistic-event-manager\n"
+"POT-Creation-Date: 2012-11-07 13:00:15+00:00\n"
+"PO-Revision-Date: 2017-08-21 08:36+0200\n"
 "Last-Translator: ms-studio <code@ms-studio.net>\n"
 "Language-Team: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 2.0.3\n"
 
-#: mem.php:83
+#: mem.php:87
 msgid "Event Dates"
 msgstr "Datum"
 
-#: mem.php:99 mem.php:107 mem.php:415
+#: mem.php:103 mem.php:111 mem.php:450
 msgid "Not Set"
 msgstr "Keine Angabe"
 
@@ -70,6 +71,10 @@ msgstr "Abbrechen"
 msgid "Delete"
 msgstr "Löschen"
 
+# translators: Time, like 1:30 PM
+msgid "g:i a"
+msgstr "H:i"
+
 # translators: Saturday 1st June 2013, 1:30 PM
 msgctxt "First day of month"
 msgid "l F jS Y, g:i a"
@@ -91,12 +96,26 @@ msgid "l, F jS Y"
 msgstr "l j. F Y"
 
 # translators: From January 1st...
-msgctxt "First day of month"
+msgctxt "First day of same month"
+msgid "F jS"
+msgstr "j."
+
+# translators: From January 1st...
+msgctxt "Other day of same month"
+msgid "F jS"
+msgstr "j."
+
+# translators: ...to February 1st
+msgid "–jS Y"
+msgstr " – j. F Y"
+
+# translators: From January 1st...
+msgctxt "First day of diff month"
 msgid "F jS"
 msgstr "j. F"
 
-# translators: From January 20th...
-msgctxt "Other day of month"
+# translators: From January 1st...
+msgctxt "Other day of diff month"
 msgid "F jS"
 msgstr "j. F"
 
@@ -109,3 +128,18 @@ msgstr " – j. F Y"
 msgctxt "Other day of month"
 msgid " – F jS Y"
 msgstr " – j. F Y"
+
+# translators: Monday, January 1st 2013
+msgctxt "First day of diff year"
+msgid "F jS Y"
+msgstr "j. F Y"
+
+# translators: Monday, January 1st 2013
+msgctxt "Other day of diff year"
+msgid "F jS Y"
+msgstr "j. F Y"
+
+# translators: From January 20th...
+#~ msgctxt "Other day of month"
+#~ msgid "F jS"
+#~ msgstr "j. F"

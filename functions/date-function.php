@@ -47,8 +47,8 @@ function mem_date_of_today() {
 // http://codex.wordpress.org/I18n_for_WordPress_Developers
 
 // Using the textdomain of the MEM plugin: 
-// example: __('Event Dates', 'mem')
-// example: _x('Event Dates', 'context explanation', 'mem')
+// example: __('Event Dates', 'minimalistic-event-manager' )
+// example: _x('Event Dates', 'context explanation', 'minimalistic-event-manager' )
 
 
 function mem_date_processing($start_date, $end_date) {
@@ -291,14 +291,14 @@ function mem_date_processing($start_date, $end_date) {
 										
 												if ( (date( "j", $unix_start)) == 1) { // 1er
 												
-												  $event_date = date_i18n( _x( 'F jS', 'First day of same month', 'mem' ), $unix_start); // \D\u j\e\\r
+												  $event_date = date_i18n( _x( 'F jS', 'First day of same month', 'minimalistic-event-manager' ), $unix_start); // \D\u j\e\\r
 												  
 												  $event_date_basic = date_i18n( _x('F j','First day of month','mem'), $unix_start);
 												  
 												
 												} else {
 												
-												  $event_date = date_i18n( _x( 'F jS', 'Other day of same month', 'mem' ), $unix_start); // Du 3 ...	// \D\u j
+												  $event_date = date_i18n( _x( 'F jS', 'Other day of same month', 'minimalistic-event-manager' ), $unix_start); // Du 3 ...	// \D\u j
 												  
 												  $event_date_basic = date_i18n( _x('F j','Other day of same month','mem'), $unix_start);
 												
@@ -306,7 +306,7 @@ function mem_date_processing($start_date, $end_date) {
 												
 												// Add END date
 												
-												  $event_date .= date_i18n( __( '–jS Y', 'mem' ), $unix_end);	
+												  $event_date .= date_i18n( __( '–jS Y', 'minimalistic-event-manager' ), $unix_end);	
 												// au 17 mars 2012
 												
 													$event_date_basic .= date_i18n( _x('–j','mem'), $unix_end);
@@ -327,17 +327,17 @@ function mem_date_processing($start_date, $end_date) {
 									if (strlen($start_date) > 7)  {
 									
 											if ( (date_i18n( "j", $unix_start)) == 1) { // 1er
-											  $event_date = date_i18n( _x( 'F jS', 'First day of diff month', 'mem' ), $unix_start);
+											  $event_date = date_i18n( _x( 'F jS', 'First day of diff month', 'minimalistic-event-manager' ), $unix_start);
 											} else { // sinon
-											  $event_date = date_i18n( _x( 'F jS', 'Other day of diff month', 'mem' ), $unix_start);	
+											  $event_date = date_i18n( _x( 'F jS', 'Other day of diff month', 'minimalistic-event-manager' ), $unix_start);	
 											}
 											
 											// process end date.
 											
 											if ( (date_i18n( "j", $unix_end)) == 1) { // 1er
-											  $event_date .= date_i18n( _x( ' – F jS Y', 'First day of month', 'mem' ), $unix_end);
+											  $event_date .= date_i18n( _x( ' – F jS Y', 'First day of month', 'minimalistic-event-manager' ), $unix_end);
 											} else { // sinon
-											  $event_date .= date_i18n( _x( ' – F jS Y', 'Other day of month', 'mem' ), $unix_end);	
+											  $event_date .= date_i18n( _x( ' – F jS Y', 'Other day of month', 'minimalistic-event-manager' ), $unix_end);	
 											}
 											
 											// numbers: 18.9-5.10.2014
@@ -374,10 +374,10 @@ function mem_date_processing($start_date, $end_date) {
 								   // Example = December 15th 2013 - January 3rd 2014 
 								
 										if ( (date_i18n( "j", $unix_start)) == 1) { // 1er
-										  $event_date = date_i18n( _x( 'F jS Y', 'First day of diff year', 'mem' ), $unix_start);
+										  $event_date = date_i18n( _x( 'F jS Y', 'First day of diff year', 'minimalistic-event-manager' ), $unix_start);
 //										  $event_date = date_i18n( "\D\u j F Y", $unix_start); // 3 janvier 2010 ...
 										} else { // sinon
-										  $event_date = date_i18n( _x( 'F jS Y', 'Other day of diff year', 'mem' ), $unix_start);
+										  $event_date = date_i18n( _x( 'F jS Y', 'Other day of diff year', 'minimalistic-event-manager' ), $unix_start);
 //										  $event_date = date_i18n( "\D\u j F Y", $unix_start); // 3 janvier 2010 ...	
 										}
 										
@@ -400,9 +400,9 @@ function mem_date_processing($start_date, $end_date) {
 								
 //										$event_date .= date_i18n( " \a\u j F Y", $unix_end); // 17 mars 2012
 										if ( (date_i18n( "j", $unix_end)) == 1) { // 1er
-										  $event_date .= date_i18n( _x( ' – F jS Y', 'First day of month', 'mem' ), $unix_end);
+										  $event_date .= date_i18n( _x( ' – F jS Y', 'First day of month', 'minimalistic-event-manager' ), $unix_end);
 										} else { // sinon
-										  $event_date .= date_i18n( _x( ' – F jS Y', 'Other day of month', 'mem' ), $unix_end);	
+										  $event_date .= date_i18n( _x( ' – F jS Y', 'Other day of month', 'minimalistic-event-manager' ), $unix_end);	
 										}
 										
 										$event_date_num .= $ndash . date( __('j.n.Y','mem'), $unix_end);
@@ -446,17 +446,17 @@ function mem_date_processing($start_date, $end_date) {
 									if (strlen($start_date) > 11) {
 											
 												if ( (date( "j", $unix_start)) == 1) { // 1st day of month ?
-												  $event_date = date_i18n( _x( 'l F jS Y, g:i a', 'First day of month', 'mem' ), $unix_start);
+												  $event_date = date_i18n( _x( 'l F jS Y, g:i a', 'First day of month', 'minimalistic-event-manager' ), $unix_start);
 												} else {
-												  $event_date = date_i18n( _x( 'l F jS Y, g:i a', 'Other day of month', 'mem' ), $unix_start);	
+												  $event_date = date_i18n( _x( 'l F jS Y, g:i a', 'Other day of month', 'minimalistic-event-manager' ), $unix_start);	
 												}
 											
 										} else { // condition 5 // START TIME is not defined.
 										
 												if ( (date( "j", $unix_start)) == 1) { // 1st day of month ?
-												  $event_date = date_i18n( _x('l, F jS Y', 'First day of month', 'mem'), $unix_start);
+												  $event_date = date_i18n( _x('l, F jS Y', 'First day of month', 'minimalistic-event-manager' ), $unix_start);
 												} else {
-												  $event_date = date_i18n( _x('l, F jS Y', 'Other day of month', 'mem'), $unix_start);
+												  $event_date = date_i18n( _x('l, F jS Y', 'Other day of month', 'minimalistic-event-manager' ), $unix_start);
 												}
 										} // END condition 5 : end testing for TIME.
 									

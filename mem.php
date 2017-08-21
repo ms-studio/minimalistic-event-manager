@@ -3,7 +3,7 @@
 Plugin Name: Minimalistic Event Manager
 Plugin URI: https://github.com/ms-studio/minimalistic-event-manager/
 Description: The plugin allows to add event dates (start dates, end dates) to posts (and to custom post types).
-Version: 1.0.9
+Version: 1.1.1
 Author: Dan Stefancu, Manuel Schmalstieg
 Author URI: http://dreamproduction.net
 
@@ -26,7 +26,7 @@ The plugin checks for valid post types before adding the metabox.
  * Init the plugin translation
  */
 function mem_lang_init() {
-	load_plugin_textdomain( 'mem', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+	load_plugin_textdomain( 'minimalistic-event-manager', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 }
 
 
@@ -81,7 +81,7 @@ function mem_add_metaboxes(){
 	// no need to further validate the data.
 	// the function wich alter settings validates post types before saving
 	foreach ($post_types as $post_type) {
-		add_meta_box('mem', __('Event Dates', 'mem'), 'mem_content', $post_type, 'side', 'core');
+		add_meta_box('mem', __('Event Dates', 'minimalistic-event-manager' ), 'mem_content', $post_type, 'side', 'core');
 	}
 }
 
@@ -97,7 +97,7 @@ function mem_content($post) {
 
 	// true as last param for get_post_meta(), to get a string, not an array
 	if (! get_post_meta( $post->ID, '_mem_start_date', true ) ) {
-		$start_date_label = __('Not Set', 'mem');
+		$start_date_label = __('Not Set', 'minimalistic-event-manager' );
 		// if no start date, delete repeats leftovers
 		delete_post_meta($post->ID, '_mem_repeat_date');
 	} else {
@@ -105,25 +105,25 @@ function mem_content($post) {
 	}
 
 	if (! get_post_meta( $post->ID, '_mem_end_date', true ) ) {
-		$end_date_label = __('Not Set', 'mem');
+		$end_date_label = __('Not Set', 'minimalistic-event-manager' );
 	} else {
 		$end_date = $end_date_label = get_post_meta( $post->ID, '_mem_end_date', true );
 	}
 
 
-	$start_title = __('Start date', 'mem');
-	$end_title = __('End date', 'mem');
+	$start_title = __('Start date', 'minimalistic-event-manager' );
+	$end_title = __('End date', 'minimalistic-event-manager' );
 	/* translators: the title of the Repeat item, not the action button */
-	$repeat_title = _x('Repeat', 'repeat item title', 'mem');
+	$repeat_title = _x('Repeat', 'repeat item title', 'minimalistic-event-manager' );
 
 	// use default wp class .misc-pub-section for spacing and that thin line below ?>
 	<div class="misc-pub-section start">
 		<span class="date-title"><?php echo $start_title; ?></span>:
 		<strong class="date-label"><?php echo $start_date_label; ?></strong>&nbsp;
-		<a href="#edit_timestamp" class="mem-edit-timestamp hide-if-no-js" tabindex='4'><?php _e('Edit', 'mem') ?></a> &nbsp;
+		<a href="#edit_timestamp" class="mem-edit-timestamp hide-if-no-js" tabindex='4'><?php _e('Edit', 'minimalistic-event-manager' ) ?></a> &nbsp;
 		<a href="#edit_timestamp" class="mem-repeat-timestamp hide-if-no-js" tabindex='4'><?php 
 		/* translators: the Repeat action button */
-		_ex('Repeat', 'repeat action button', 'mem') ?></a>
+		_ex('Repeat', 'repeat action button', 'minimalistic-event-manager' ) ?></a>
 		<div class='hide-if-js mem-date-select'><?php mem_touch_time( 'start', $start_date ); ?></div>
 	</div>
 
@@ -140,7 +140,7 @@ function mem_content($post) {
 			<div class="misc-pub-section repeat">
 				<span class="date-title"><?php echo $repeat_title . " #" . $repeat_count; ?></span>:
 				<strong class="date-label"><?php echo $repeat_date_label; ?></strong>&nbsp;
-				<a href="#edit_timestamp" class="mem-edit-timestamp hide-if-no-js" tabindex='4'><?php _e('Edit', 'mem') ?></a>
+				<a href="#edit_timestamp" class="mem-edit-timestamp hide-if-no-js" tabindex='4'><?php _e('Edit', 'minimalistic-event-manager' ) ?></a>
 				<div class='hide-if-js mem-date-select'><?php mem_touch_time( 'repeat', $repeat_date, $repeat_count ); ?></div>
 			</div>
 
@@ -156,7 +156,7 @@ function mem_content($post) {
 	<div class="misc-pub-section end">
 		<span class="date-title"><?php echo $end_title; ?></span>:
 		<strong class="date-label"><?php echo $end_date_label; ?></strong>&nbsp;
-		<a href="#edit_timestamp" class="mem-edit-timestamp hide-if-no-js" tabindex='4'><?php _e('Edit', 'mem') ?></a>
+		<a href="#edit_timestamp" class="mem-edit-timestamp hide-if-no-js" tabindex='4'><?php _e('Edit', 'minimalistic-event-manager' ) ?></a>
 		<div class='hide-if-js mem-date-select'><?php mem_touch_time( 'end', $end_date ); ?></div>
 	</div>
 
@@ -204,7 +204,7 @@ function mem_touch_time( $type = 'start', $custom_date = '', $repeat_count = 0 )
 		if ( $i == $mm )
 			$month .= ' selected="selected"';
 		/* translators: 1: month number (01, 02, etc.), 2: month abbreviation */
-		$month .= '>' . sprintf( __( '%1$s-%2$s', 'mem' ), $monthnum, $wp_locale->get_month_abbrev( $wp_locale->get_month( $i ) ) ) . "</option>\n";
+		$month .= '>' . sprintf( __( '%1$s-%2$s', 'minimalistic-event-manager' ), $monthnum, $wp_locale->get_month_abbrev( $wp_locale->get_month( $i ) ) ) . "</option>\n";
 	}
 	$month .= '</select>';
 
@@ -222,7 +222,7 @@ function mem_touch_time( $type = 'start', $custom_date = '', $repeat_count = 0 )
 	} else {
 
 		/* translation of the input order. 1 month, 2 day, 3 year, 4 hour, 5 minute */
-		printf(__('%1$s%2$s, %3$s @ %4$s : %5$s', 'mem'), $month, $day, $year, $hour, $minute);
+		printf(__('%1$s%2$s, %3$s @ %4$s : %5$s', 'minimalistic-event-manager' ), $month, $day, $year, $hour, $minute);
 	}
 
 	// we need to store the old value for repeats, so we can store multiple repeats
@@ -235,10 +235,10 @@ function mem_touch_time( $type = 'start', $custom_date = '', $repeat_count = 0 )
 	?>
 
 <div class="mem-edit-buttons">
-	<a href="#edit_timestamp" class="mem-save-timestamp hide-if-no-js button"><?php _e('OK', 'mem'); ?></a>
-	<a href="#edit_timestamp" class="mem-cancel-timestamp hide-if-no-js"><?php _e('Cancel', 'mem'); ?></a>
+	<a href="#edit_timestamp" class="mem-save-timestamp hide-if-no-js button"><?php _e('OK', 'minimalistic-event-manager' ); ?></a>
+	<a href="#edit_timestamp" class="mem-cancel-timestamp hide-if-no-js"><?php _e('Cancel', 'minimalistic-event-manager' ); ?></a>
 	<span class="mem-separator"> | </span>
-	<a href="#edit_timestamp" class="mem-delete-timestamp hide-if-no-js"><?php _e('Delete', 'mem'); ?></a>
+	<a href="#edit_timestamp" class="mem-delete-timestamp hide-if-no-js"><?php _e('Delete', 'minimalistic-event-manager' ); ?></a>
 </div>
 <?php
 }
@@ -449,9 +449,9 @@ function mem_ajax() {
 function mem_js() {
 	wp_enqueue_script( 'mem_js', plugins_url('/js/mem.js', __FILE__), array('jquery') );
 	$translation_array = array(
-		'not_set' => __('Not Set', 'mem'),
-		//'repeat' => __('Repeat', 'mem'),
-		'repeat' => _x('Repeat', 'repeat item title', 'mem'),
+		'not_set' => __('Not Set', 'minimalistic-event-manager' ),
+		//'repeat' => __('Repeat', 'minimalistic-event-manager' ),
+		'repeat' => _x('Repeat', 'repeat item title', 'minimalistic-event-manager' ),
 	);
 	// sending ajaxurl as translated string is a hack seen as good practice to send the variable across scripts
 	// @see http://www.garyc40.com/2010/03/5-tips-for-using-ajax-in-wordpress/#js-global
