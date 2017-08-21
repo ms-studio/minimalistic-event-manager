@@ -85,6 +85,11 @@ Of course, here: [https://github.com/ms-studio/minimalistic-event-manager/](http
 
 == Changelog ==
 
+= 1.1.1 =
+
+* Fixing plugin textdomain
+* updating german translation 
+
 = 1.1.0 =
 
 * version bump (WP compatibility)
