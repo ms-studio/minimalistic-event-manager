@@ -262,8 +262,12 @@ function mem_date_processing($start_date, $end_date) {
 									
 									if ($start_day == $end_day) { // yes, same day! 
 									
-											// 5) the events must have a different time
+											// The events must have a different time
 											// *****************************************
+
+											// Example: Tuesday March 15th 2013, 5:30 PM - 6:30 PM
+											// Basic: March 15
+											// Numeric: 15.03.2013
 											
 												if ( (date( "j", $unix_start)) == 1) { // 1er
 												
@@ -288,6 +292,7 @@ function mem_date_processing($start_date, $end_date) {
 									} else { // two different days, but SAME month.
 									
 												// Example: March 4th-15th 2013
+												// Basic : March 4-15
 										
 												if ( (date( "j", $unix_start)) == 1) { // 1er
 												
@@ -318,8 +323,6 @@ function mem_date_processing($start_date, $end_date) {
 									
 								} else { // ELSE condition 5 // two different MONTHS, but same year
 								
-									$event_date_short = date_i18n( "F", $unix_start); // janvier
-									$event_date_short .= $ndash . date_i18n( "F Y", $unix_end); // - mars 2012
 								
 									// condition 6 // TEST if the start DAY is definded
 									// ************************************************
@@ -342,9 +345,17 @@ function mem_date_processing($start_date, $end_date) {
 											// process end date.
 											
 											if ( (date_i18n( "j", $unix_end)) == 1) { // 1er
+											
 											  $event_date .= date_i18n( _x( ' – F jS Y', 'First day of month', 'minimalistic-event-manager' ), $unix_end);
+											  
+											  $event_date_basic .= date_i18n( _x( ' – F j', 'First day of month', 'minimalistic-event-manager' ), $unix_end);
+											
 											} else { // sinon
+											
 											  $event_date .= date_i18n( _x( ' – F jS Y', 'Other day of month', 'minimalistic-event-manager' ), $unix_end);	
+											  
+											  $event_date_basic .= date_i18n( _x( ' – F j', 'Other day of month', 'minimalistic-event-manager' ), $unix_end);	
+											
 											}
 											
 											// numbers: 18.9-5.10.2014
@@ -352,8 +363,14 @@ function mem_date_processing($start_date, $end_date) {
 											$event_date_num .= date( __('j.n.Y','minimalistic-event-manager'), $unix_end);
 										
 									} else {
+									
 											// Start DAY not defined = output only the month.
-											$event_date = $event_date_short;
+											
+											$event_date_short = date_i18n( "F", $unix_start); // janvier
+											$event_date_basic = $event_date_short;
+											
+											$event_date_short .= $ndash . date_i18n( "F Y", $unix_end); // - mars 2012
+											$event_date_basic .= $ndash . date_i18n( "F", $unix_end);
 											
 											$event_date_num = date( __('n','minimalistic-event-manager'), $unix_start);
 											$event_date_num .= $ndash . date( __('n.Y','minimalistic-event-manager'), $unix_end);
@@ -448,6 +465,8 @@ function mem_date_processing($start_date, $end_date) {
 									
 									$event_date_num = date( __('j.n.Y','minimalistic-event-manager'), $unix_start);
 									
+									$event_date_basic = date_i18n( "F j", $unix_start);
+									
 									// condition 5 // test if TIME is defined.
 								
 									if (strlen($start_date) > 11) {
@@ -470,6 +489,8 @@ function mem_date_processing($start_date, $end_date) {
 								} else { // ELSE condition 4 : START DAY is not defined.
 								
 									$event_date = $event_date_short;
+									
+									$event_date_basic = date_i18n( "F", $unix_start);
 									
 									$event_date_num = date( __('n.Y','minimalistic-event-manager'), $unix_start);
 								
@@ -513,9 +534,12 @@ function mem_date_processing($start_date, $end_date) {
 			// build an ARRAY to return:
 			
 			$event_date_array = array(
-			    "date" => $event_date, // Jeudi 19 septembre 2013
-			    "date-short" => $event_date_short,
-			    "date-basic" => $event_date_basic,
+			    "date" => $event_date, // Displays the date with all available information, including year, month, day, time. Example: "Tuesday March 15th 2013, 8:30 AM".
+			    
+			    "date-short" => $event_date_short, // Precision level stops at year and month. Doesn't show day or time information. Year is always displayed. Example: "March 2013".
+			    
+			    "date-basic" => $event_date_basic, // Doesn't show time. Doesn't show the year. Day numeral is displayed without the "th". Example: "March 15".
+			    
 			    "date-num" => $event_date_num, // 19.11.2013
 			    
 			    "start-iso" => $start_date_iso,
