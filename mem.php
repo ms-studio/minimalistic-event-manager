@@ -26,7 +26,7 @@ The plugin checks for valid post types before adding the metabox.
  * Init the plugin translation
  */
 function mem_lang_init() {
-	load_plugin_textdomain( 'minimalistic-event-manager', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+	load_plugin_textdomain( 'minimalistic-event-manager' );
 }
 
 
